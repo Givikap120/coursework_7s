@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AutoVisualizer xmlns="http://schemas.microsoft.com/vstudio/debugger/natvis/2010">
+  <Type Name="Transition">
+    <DisplayString>{Name} [{eventTimes.size()} / {CountAvailableTransitions()}]</DisplayString>
+  </Type>
+  <Type Name="Place">
+    <DisplayString>{Name} ({marks})</DisplayString>
+  </Type>
+  <Type Name="ArcToPlace">
+    <DisplayString>{Input->Name}-></DisplayString>
+  </Type>
+  <Type Name="ArcToTransition">
+    <DisplayString>->{Output->Name}</DisplayString>
+  </Type>
+</AutoVisualizer>
