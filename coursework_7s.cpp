@@ -77,10 +77,8 @@ static void verification()
 static void findOptimalSimulationTime()
 {
 	DirtTransportationModel model;
-	model.p.SimulationTime = 10000;
-	
 	auto graphs = model.RunProgressiveBatch(5, true);
-	DirtTransportationModel::OutputToCSV(graphs, "graphs2.csv", 1000);
+	DirtTransportationModel::OutputToCSV(graphs, "graphs.csv", 1000);
 }
 
 static void findSTD()
@@ -140,7 +138,7 @@ static void factorTest()
 	std::cout << "G = " << max / sum;
 }
 
-void optimalRunOnce()
+static void optimalRunOnce()
 {
 	DirtTransportationModel model;
 	model.p.DumpTracks = 6;
