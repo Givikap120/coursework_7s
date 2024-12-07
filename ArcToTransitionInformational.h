@@ -4,7 +4,7 @@
 class ArcToTransitionInformational : public ArcToTransition
 {
 public:
-	ArcToTransitionInformational(Model* model, Place* input, Transition* output, int connections = 1) : ArcToTransition(model, input, output, connections) {}
+	ArcToTransitionInformational(const double& modelTime, Place* input, Transition* output, int connections = 1) : ArcToTransition(modelTime, input, output, connections) {}
 	
 	void TakeMarksFromPlace() override {}
 };

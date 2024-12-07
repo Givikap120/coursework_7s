@@ -10,5 +10,5 @@ public:
 	Transition* Input;
 	Place* Output;
 
-	ArcToPlace(Model* model, Transition* input, Place* output, int connections = 1) : Arc(model, connections), Input(input), Output(output) {}
+	ArcToPlace(const double& modelTime, Transition* input, Place* output, int connections = 1) : Arc(modelTime, connections), Input(input), Output(output) {}
 };

@@ -36,7 +36,7 @@ bool Transition::ActivateTransition()
 		arc->TakeMarksFromPlace();
 	}
 
-	double eventTime = model->CurrentTime + DelayFunction();
+	double eventTime = CurrentTime + DelayFunction();
 
 	eventTimes.insert(std::move(eventTime));
 	return activated;
@@ -44,7 +44,7 @@ bool Transition::ActivateTransition()
 
 void Transition::FinishTransition()
 {
-	auto finishedEvents = eventTimes.upper_bound(model->CurrentTime);
+	auto finishedEvents = eventTimes.upper_bound(CurrentTime);
 
 	int finishedAmount = (int)std::distance(eventTimes.begin(), finishedEvents);
 	if (finishedAmount == 0) return;

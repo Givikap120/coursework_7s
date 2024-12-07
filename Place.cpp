@@ -3,8 +3,8 @@
 
 void Place::updateTimeStats()
 {
-	double deltaT = model->CurrentTime - timeSinceTimeStatsUpdate;
-	timeSinceTimeStatsUpdate = model->CurrentTime;
+	double deltaT = CurrentTime - timeSinceTimeStatsUpdate;
+	timeSinceTimeStatsUpdate = CurrentTime;
 
 	weightedMarksSum += marks * deltaT;
 	maxMarks = std::max(maxMarks, marks);
@@ -25,7 +25,7 @@ void Place::TakeMarks(int N)
 double Place::GetAverageMarksCount()
 {
 	updateTimeStats();
-	return weightedMarksSum / model->CurrentTime;
+	return weightedMarksSum / CurrentTime;
 }
 
 int Place::GetMaxMarksCount()

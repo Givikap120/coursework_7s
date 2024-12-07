@@ -21,7 +21,7 @@ class Transition : public Element
 	int totalFinished = 0;
 
 public:
-	Transition(Model* model, std::function<double()> delay = []() {return 0; }) : Element(model), DelayFunction(delay) {}
+	Transition(const double& modelTime, std::function<double()> delay = []() {return 0; }) : Element(modelTime), DelayFunction(delay) {}
 
 	std::function<double()> DelayFunction;
 

@@ -7,6 +7,6 @@ class Arc : public Element
 public:
 	int Connections;
 
-	Arc(Model* model, int connections) : Element(model), Connections(connections) {}
+	Arc(const double& modelTime, int connections) : Element(modelTime), Connections(connections) {}
 };
 

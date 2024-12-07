@@ -34,7 +34,7 @@ public:
 	T* CreateElement(Args&&... args) {
 		static_assert(std::is_base_of<Element, T>::value, "T must be derived from Element");
 
-		std::unique_ptr<T> elementObject = std::make_unique<T>(this, std::forward<Args>(args)...);
+		std::unique_ptr<T> elementObject = std::make_unique<T>(CurrentTime, std::forward<Args>(args)...);
 		T* element = elementObject.get();
 		AddElement(std::move(elementObject));
 
@@ -45,7 +45,7 @@ public:
 	T* CreateNamedElement(std::string name, Args&&... args) {
 		static_assert(std::is_base_of<Element, T>::value, "T must be derived from Element");
 
-		std::unique_ptr<T> elementObject = std::make_unique<T>(this, std::forward<Args>(args)...);
+		std::unique_ptr<T> elementObject = std::make_unique<T>(CurrentTime, std::forward<Args>(args)...);
 		T* element = elementObject.get();
 		element->Name = name;
 		AddElement(std::move(elementObject));

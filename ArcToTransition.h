@@ -10,7 +10,7 @@ public:
 	Place* Input;
 	Transition* Output;
 
-	ArcToTransition(Model* model, Place* input, Transition* output, int connections = 1) : Arc(model, connections), Input(input), Output(output) {}
+	ArcToTransition(const double& modelTime, Place* input, Transition* output, int connections = 1) : Arc(modelTime, connections), Input(input), Output(output) {}
 
 	bool IsTransitionAvailable() const { return Input->GetMarks() >= Connections; }
 	virtual void TakeMarksFromPlace() { Input->TakeMarks(Connections); }

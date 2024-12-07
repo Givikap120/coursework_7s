@@ -84,7 +84,7 @@ double Model::getNextEventTime() const
 
 void Model::Connect(Place* input, Transition* output, int connections)
 {
-    auto arc = std::make_unique<ArcToTransition>(this, input, output, connections);
+    auto arc = std::make_unique<ArcToTransition>(CurrentTime, input, output, connections);
 
     input->AddOutputArc(arc.get());
     output->AddInputArc(arc.get());
@@ -94,7 +94,7 @@ void Model::Connect(Place* input, Transition* output, int connections)
 
 void Model::Connect(Transition* input, Place* output, int connections)
 {
-    auto arc = std::make_unique<ArcToPlace>(this, input, output, connections);
+    auto arc = std::make_unique<ArcToPlace>(CurrentTime, input, output, connections);
 
     input->AddOutputArc(arc.get());
     output->AddInputArc(arc.get());
@@ -104,7 +104,7 @@ void Model::Connect(Transition* input, Place* output, int connections)
 
 void Model::ConnectInformational(Place* input, Transition* output, int connections)
 {
-    auto arc = std::make_unique<ArcToTransitionInformational>(this, input, output, connections);
+    auto arc = std::make_unique<ArcToTransitionInformational>(CurrentTime, input, output, connections);
 
     input->AddOutputArc(arc.get());
     output->AddInputArc(arc.get());

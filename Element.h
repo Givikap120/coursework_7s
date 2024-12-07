@@ -10,10 +10,10 @@ public:
 	std::string Name;
 
 protected:
-	Model* model;
+	const double& CurrentTime;
 
 public:
-	Element(Model* model) : model(model) {}
+	Element(const double& modelTime) : CurrentTime(modelTime) {}
 	virtual ~Element() {}
 };
 

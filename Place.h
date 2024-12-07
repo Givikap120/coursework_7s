@@ -21,7 +21,7 @@ class Place : public Element
 
 	void updateTimeStats();
 public:
-	Place(Model* model, int currentMarks = 0) : Element(model), marks(currentMarks) {}
+	Place(const double& modelTime, int currentMarks = 0) : Element(modelTime), marks(currentMarks) {}
 
 	void AddInputArc(ArcToPlace* arc) { inputArcs.push_back(arc); }
 	void AddOutputArc(ArcToTransition* arc) { outputArcs.push_back(arc); }
