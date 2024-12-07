@@ -27,14 +27,6 @@ public:
         data.insert(pos, std::forward<T>(value));
     }
 
-    void batch_insert(std::vector<T>&& batch)
-    {
-        std::sort(batch.begin(), batch.end());
-        data.reserve(data.size() + batch.size());
-        std::move(batch.begin(), batch.end(), std::back_inserter(data));
-        std::inplace_merge(data.begin(), data.begin() + data.size() - batch.size(), data.end());
-    }
-
     void erase(std::vector<T>::iterator it)
     {
         data.erase(it);
