@@ -130,7 +130,7 @@ static void factorTest()
 				std::cout << numberOfDumpTracksFactor << " " << loaderCooldownTimeFactor << " " << useType2LoaderFactor << ": ";
 				std::cout << round(mean, 4);
 				std::cout <<", D = " << round(variance * 1000, 4) << " * 10^(-3)";
-				std::cout << "\n\n";
+				std::cout << "\n";
 
 				RandomUtils::ResetRandom(false);
 			}

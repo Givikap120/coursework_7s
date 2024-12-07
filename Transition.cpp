@@ -27,9 +27,7 @@ bool Transition::ActivateTransition()
 {
 	bool activated = IsTransitionAvailable();
 	if (!activated)
-	{
-		return 0;
-	}
+		return false;
 
 	for (auto arc : inputArcs)
 	{
