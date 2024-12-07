@@ -12,6 +12,6 @@ public:
 
 	ArcToTransition(Model* model, Place* input, Transition* output, int connections = 1) : Arc(model, connections), Input(input), Output(output) {}
 
-	virtual int CountAvailableTransitions() const { return Input->GetMarks() / Connections; }
-	virtual void GetMarksFromPlace(int activated) { Input->TakeMarks(Connections * activated); }
+	bool IsTransitionAvailable() const { return Input->GetMarks() >= Connections; }
+	virtual void TakeMarksFromPlace() { Input->TakeMarks(Connections); }
 };

@@ -17,22 +17,21 @@ void Model::Simulate(double simulationTime)
     if (checkIfAllTransitionsValid() == false)
         throw std::logic_error("All transitions must have inputs and outputs");
 
-    int activated;
+    bool wasActivated;
     std::vector<Transition*> availableTransitions;
     availableTransitions.reserve(transitions.size());
 
     while (CurrentTime <= simulationTime) {
 
-        finishAllActiveTransitions();
+        finishTransitions();
 
         addAllAvailableTransitionsTo(availableTransitions);
 
+        wasActivated = false;
         if (!availableTransitions.empty())
-            activated = RandomUtils::SelectRandomFrom(availableTransitions)->ActivateAllTransitions();
-        else
-            activated = 0;
+            wasActivated = RandomUtils::SelectRandomFrom(availableTransitions)->ActivateTransition();
 
-        if (activated == 0)
+        if (!wasActivated)
         {
             double nextTime = getNextEventTime();
             double deltaT = nextTime - CurrentTime;
@@ -55,7 +54,7 @@ bool Model::checkIfAllTransitionsValid() const
     return true;
 }
 
-void Model::finishAllActiveTransitions()
+void Model::finishTransitions()
 {
     for (auto transition : transitions)
     {
@@ -68,7 +67,7 @@ void Model::addAllAvailableTransitionsTo(std::vector<Transition*>& targetTransit
 {
     for (auto transition : transitions)
     {
-        if (transition->CountAvailableTransitions() > 0)
+        if (transition->IsTransitionAvailable())
             targetTransitions.push_back(transition);
     }
 }

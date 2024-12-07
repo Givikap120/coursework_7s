@@ -18,7 +18,7 @@ class Model
 
 	bool checkIfAllTransitionsValid() const;
 
-	void finishAllActiveTransitions();
+	void finishTransitions();
 	void addAllAvailableTransitionsTo(std::vector<Transition*>& transitions);
 	double getNextEventTime() const;
 

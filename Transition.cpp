@@ -11,44 +11,34 @@
 
 #include <iostream>
 
-int Transition::CountAvailableTransitions() const
+bool Transition::IsTransitionAvailable() const
 {
-	int min = std::numeric_limits<int>::max();
-
 	for (auto arc : inputArcs)
 	{
-		int n = arc->CountAvailableTransitions();
-		if (n == 0)
-			return 0;
-
-		min = std::min(n, min);
+		bool isAvailable = arc->IsTransitionAvailable();
+		if (!isAvailable)
+			return false;
 	}
 
-	return min;
+	return true;
 }
 
-int Transition::ActivateAllTransitions()
+bool Transition::ActivateTransition()
 {
-	int activated = CountAvailableTransitions();
-	if (activated == 0)
+	bool activated = IsTransitionAvailable();
+	if (!activated)
 	{
 		return 0;
 	}
 
 	for (auto arc : inputArcs)
 	{
-		arc->GetMarksFromPlace(activated);
+		arc->TakeMarksFromPlace();
 	}
 
-	std::vector<double> newEventTimes(activated);
+	double eventTime = model->CurrentTime + DelayFunction();
 
-	for (auto& eventTime : newEventTimes)
-	{
-		double newTime = model->CurrentTime + DelayFunction();
-		eventTime = newTime;
-	}
-
-	eventTimes.batch_insert(std::move(newEventTimes));
+	eventTimes.insert(std::move(eventTime));
 	return activated;
 }
 

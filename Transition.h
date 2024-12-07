@@ -27,16 +27,16 @@ public:
 
 	int GetActiveCount() const { return (int)eventTimes.size(); }
 	
-	double virtual GetEventTime() const { return eventTimes.empty() ? std::numeric_limits<double>::infinity() : *eventTimes.begin(); }
+	double virtual GetEventTime() const { return eventTimes.empty() ? std::numeric_limits<double>::infinity() : eventTimes[0]; }
 
 	void AddInputArc(ArcToTransition* arc) { inputArcs.push_back(arc); }
 	void AddOutputArc(ArcToPlace* arc) { outputArcs.push_back(arc); }
 
 	bool IsValid() const { return inputArcs.size() > 0 && outputArcs.size() > 0; }
 
-	int CountAvailableTransitions() const;
+	bool IsTransitionAvailable() const;
 
-	int virtual ActivateAllTransitions();
+	bool virtual ActivateTransition();
 	void virtual FinishTransition();
 
 	// Statistics
