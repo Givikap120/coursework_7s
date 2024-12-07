@@ -1,5 +1,4 @@
 #include "Place.h"
-#include "Model.h"
 
 void Place::updateTimeStats()
 {

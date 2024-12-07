@@ -4,8 +4,6 @@
 #include "ArcToTransition.h"
 #include "ArcToPlace.h"
 
-#include "Model.h"
-
 #include <limits>
 #include <stdexcept>
 

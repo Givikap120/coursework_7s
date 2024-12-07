@@ -2,8 +2,6 @@
 
 #include <string>
 
-class Model;
-
 class Element
 {
 public:
